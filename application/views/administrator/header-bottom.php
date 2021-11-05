@@ -6,31 +6,6 @@
 
      <!-- Menu aside start -->
     <div class="main-menu">
-        <div class="main-menu-header">
-           <ul class="nav-left-new">
-                        <li>
-                            <a id="collapse-menu" href="#">
-                                <i class="ti-home"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="main-search morphsearch-search" href="#">
-                                <i class="ti-user   "></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="main-search morphsearch-search" href="#">
-                                <i class="ti-settings"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="main-search morphsearch-search" href="#">
-                                <i class="ti-email"></i>
-                            </a>
-                        </li>
-                   
-                    </ul>
-        </div>
         <div class="main-menu-content">
             <ul class="main-navigation">
              <li class="nav-item has-class">

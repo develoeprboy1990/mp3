@@ -42,12 +42,14 @@
                                                 <div class="tab-pane active" id="">
                                                         <div class="row">
                                                             <div class="col-sm-6">
+                                                                <label for="img">Name</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-ui-user"></i></span>
                                                                     <input class="form-control" name="name" placeholder="Song Name" type="text">
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-6">
+                                                                <label for="img">Music Composer(s)</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-man-in-glasses"></i></span>
                                                                     <input class="form-control" name="composer" placeholder="Music Composer(s)" type="text">
@@ -56,12 +58,14 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-6">
+                                                                <label for="img">Lyric Writter(s)</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-ui-note"></i></span>
                                                                     <input class="form-control" name="writter" placeholder="Lyric Writter(s)" type="text">
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-6">
+                                                                <label for="img">Singer(s)</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-cur-dollar"></i></span>
                                                                     <input class="form-control" name="singer" placeholder="Singer(s)" type="text">
@@ -70,12 +74,14 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-6">
+                                                                <label for="img">Movie</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-numbered"></i></span>
                                                                     <input class="form-control" name="movie" placeholder="Movie" type="text">
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-6">
+                                                                <label for="img">Category</label>
                                                                 <select name="cat_id" class="form-control form-control-primary">
                                                                     <option value="opt1">Select a Category</option>
                                                                     
@@ -90,6 +96,7 @@
                                                         </div> 
                                                          <div class="row">
                                                             <div class="col-sm-6">
+                                                                <label for="img">Song Tag</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-underline"></i></span>
                                                                     <input class="form-control" name="tag" placeholder="Song Tag" type="text">

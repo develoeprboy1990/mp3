@@ -44,12 +44,14 @@
                                                 <div class="tab-pane active" id="">
                                                         <div class="row">
                                                             <div class="col-sm-6">
+                                                                <label for="img">Song Name</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-ui-user"></i></span>
                                                                     <input class="form-control" value="<?php echo $productsDetails['name']; ?>" name="name" placeholder="Song Name" type="text">
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-6">
+                                                                <label for="img">Music Composer(s)</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-man-in-glasses"></i></span>
                                                                     <input class="form-control" name="composer" placeholder="Music Composer(s)" type="text" value="<?php echo $productsDetails['composer']; ?>" >
@@ -58,12 +60,14 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-6">
+                                                                <label for="img">Lyric Writter(s)</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-ui-note"></i></span>
                                                                     <input class="form-control" name="writter" placeholder="Lyric Writter(s)" type="text" value="<?php echo $productsDetails['writter']; ?>">
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-6">
+                                                                <label for="img">Singer(s)</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-cur-dollar"></i></span>
                                                                     <input class="form-control" name="singer" placeholder="Singer(s)" type="text" value="<?php echo $productsDetails['singer']; ?>">
@@ -72,12 +76,14 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-6">
+                                                                <label for="img">Movie</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-numbered"></i></span>
                                                                     <input class="form-control" name="movie" placeholder="Movie" type="text" value="<?php echo $productsDetails['movie']; ?>">
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-6">
+                                                                <label for="img">Categories</label>
                                                                 <select name="cat_id" class="form-control form-control-primary">
                                                                     <?php foreach($product_categories as $post) : ?>
                                                                          <option value="<?php echo $post['id']; ?>" 
@@ -104,17 +110,19 @@
                                                         </div> -->
                                                         <div class="row">
                                                             <div class="col-sm-6">
+                                                                <label for="img">Song Tag</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-underline"></i></span>
                                                                     <input class="form-control" name="tag" placeholder="Product Tag" type="text" value="<?php echo $productsDetails['tag']; ?>">
                                                                 </div>
                                                             </div>
                                                              <div class="col-sm-6">
+                                                                <label for="img">Status</label><br>
                                                                    <div class="checkbox-fade fade-in-primary checkbox">
                                                                 <label>
                                                                     <input value="1"  <?php if($productsDetails['status'] == '1'){ echo "checked" ; } ?> type="checkbox" name="status" class="form-control">
                                                                     <span class="cr"><i class="cr-icon icofont icofont-verification-check txt-primary"></i></span>
-                                                                   Change Status Of The Product
+                                                                   Change Status Of The Song
                                                                 </label>
                                                             </div>
                                                             </div>

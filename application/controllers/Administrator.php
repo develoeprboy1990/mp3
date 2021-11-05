@@ -5,7 +5,7 @@
 
 		public function view($page = 'index'){
 			if($this->session->userdata('login')) {
-    			redirect('administrator/dashboard');
+    			redirect('administrator/products');
    			}
 
 			if (!file_exists(APPPATH.'views/administrator/'.$page.'.php')) {
@@ -83,7 +83,7 @@
 
 					//Set Message
 					$this->session->set_flashdata('success', 'Welcome to administrator Dashboard.');
-					redirect('administrator/dashboard');
+					redirect('administrator/products');
 				}else{
 					$this->session->set_flashdata('danger', 'Login Credential in invalid!');
 					redirect('administrator/index');

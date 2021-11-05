@@ -8,23 +8,14 @@
     <div class="main-menu">
         <div class="main-menu-content">
             <ul class="main-navigation">
-             <li class="nav-item has-class">
+             <!-- <li class="nav-item has-class">
                     <a href="<?php echo base_url(); ?>administrator/dashboard">
                         <i class="ti-home"></i>
                         <span>Dashboard</span>
                     </a>
-                </li>
+                </li> -->
              
-                <li class="nav-item">
-                    <a href="#!">
-                        <i class="ti-layout"></i>
-                        <span>Users</span>
-                    </a>
-                    <ul class="tree-1">
-                        <li><a href="<?php echo base_url(); ?>administrator/users/add-user">Add User</a></li>
-                        <li><a href="<?php echo base_url(); ?>administrator/users/users">Users</a></li>
-                    </ul>
-                </li>
+
                 <!-- <li class="nav-item">
                         <a href="#!">
                             <i class="ti-layers"></i>
@@ -65,6 +56,16 @@
                             <li><a href="<?php echo base_url(); ?>administrator/products">List Songs</a></li>
                         </ul>
                     </li>
+                                    <li class="nav-item">
+                    <a href="#!">
+                        <i class="ti-layout"></i>
+                        <span>Users</span>
+                    </a>
+                    <ul class="tree-1">
+                        <li><a href="<?php echo base_url(); ?>administrator/users/add-user">Add User</a></li>
+                        <li><a href="<?php echo base_url(); ?>administrator/users/users">Users</a></li>
+                    </ul>
+                </li>
                     <!-- <li class="nav-item">
                         <a href="#!">
                             <i class="ti-write"></i>

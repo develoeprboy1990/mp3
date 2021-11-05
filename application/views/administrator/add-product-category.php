@@ -57,11 +57,10 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Discription</label>
                                         <div class="input-group col-sm-10">
-                                                                    <span class="input-group-addon"><i class="icofont icofont-copy-alt"></i></span>
-                                                                        <textarea name="description" placeholder="Please Provide a valid Formated Product Description!" id="editor1"></textarea>
-                                                                    </div>     
-                                    </div>
-                                                            
+                                        <span class="input-group-addon"><i class="icofont icofont-copy-alt"></i></span>
+                                            <textarea name="descp" placeholder="Please Provide a valid Formated Product Description!" id="editor1"></textarea>
+                                        </div>     
+                                    </div>                  
                                     
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Want to make Enable?</label>

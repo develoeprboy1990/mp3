@@ -47,7 +47,7 @@ $(document).ready(function(){
 
             <div class="page-header">
                 <div class="page-header-title">
-                    <h4>List Users</h4>
+                    <h4>List Categories</h4>
                 </div>
                 <div class="page-header-breadcrumb">
                     <ul class="breadcrumb-title">
@@ -56,9 +56,9 @@ $(document).ready(function(){
                                 <i class="icofont icofont-home"></i>
                             </a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">Users</a>
+                        <li class="breadcrumb-item"><a href="#!">Categories</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">List Users</a>
+                        <li class="breadcrumb-item"><a href="#!">List Categories</a>
                         </li>
                     </ul>
                 </div>
@@ -77,6 +77,7 @@ $(document).ready(function(){
                                     <tr>
                                         <th>Id</th>
                                         <th>Name</th>
+                                        <th>Description</th>
                                         <th>status</th>
                                         <th>Action</th>
                                     </tr>
@@ -86,7 +87,8 @@ $(document).ready(function(){
                                  <tr>
                                         <td><?php echo $post['id']; ?></td>
                                         <td><a href=""><?php echo $post['name']; ?></a></td>
-                                        <td><?php if($post['status'] == 1) { echo 'active'; }else{ echo 'Inactive' ; } ?></td>
+                                        <td><?php echo $post['descp']; ?></td>
+                                         <td><?php if($post['status'] == 1) { echo 'active'; }else{ echo 'Inactive' ; } ?></td>
                                         <td>
                                                 <?php if($post['status'] == 1){ ?>
                                                <a class="label label-inverse-primary enable" href='<?php echo base_url(); ?>administrator/enable/<?php echo $post['id']; ?>?table=<?php echo base64_encode('categories'); ?>'>Enabled</a>

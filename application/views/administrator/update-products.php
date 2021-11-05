@@ -7,7 +7,7 @@
     
             <div class="page-header">
                 <div class="page-header-title">
-                    <h4>Products</h4>
+                    <h4>Songs</h4>
                 </div>
                 <div class="page-header-breadcrumb">
                     <ul class="breadcrumb-title">
@@ -16,9 +16,9 @@
                                 <i class="icofont icofont-home"></i>
                             </a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">Products</a>
+                        <li class="breadcrumb-item"><a href="#!">Songs</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">Update Product</a>
+                        <li class="breadcrumb-item"><a href="#!">Update Song</a>
                         </li>
                     </ul>
                 </div>
@@ -31,7 +31,7 @@
                         <!-- Product edit card start -->
                         <div class="card">
                             <div class="card-header">
-                                <h5>Product Update</h5>
+                                <h5>Song Update</h5>
                             </div>
                             <div class="card-block">
                                 <div class="row">
@@ -46,13 +46,13 @@
                                                             <div class="col-sm-6">
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-ui-user"></i></span>
-                                                                    <input class="form-control" value="<?php echo $productsDetails['name']; ?>" name="name" placeholder="Product Name" type="text">
+                                                                    <input class="form-control" value="<?php echo $productsDetails['name']; ?>" name="name" placeholder="Song Name" type="text">
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-6">
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-man-in-glasses"></i></span>
-                                                                    <input class="form-control" name="sku" placeholder="SKU" type="text" value="<?php echo $productsDetails['sku']; ?>" readonly="">
+                                                                    <input class="form-control" name="composer" placeholder="Music Composer(s)" type="text" value="<?php echo $productsDetails['composer']; ?>" >
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -60,13 +60,13 @@
                                                             <div class="col-sm-6">
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-ui-note"></i></span>
-                                                                    <input class="form-control" name="save_price" placeholder="Offer Price" type="text" value="<?php echo $productsDetails['save_price']; ?>">
+                                                                    <input class="form-control" name="writter" placeholder="Lyric Writter(s)" type="text" value="<?php echo $productsDetails['writter']; ?>">
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-6">
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-cur-dollar"></i></span>
-                                                                    <input class="form-control" name="price" placeholder="Price" type="text" value="<?php echo $productsDetails['price']; ?>">
+                                                                    <input class="form-control" name="singer" placeholder="Singer(s)" type="text" value="<?php echo $productsDetails['singer']; ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -74,21 +74,7 @@
                                                             <div class="col-sm-6">
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-numbered"></i></span>
-                                                                    <input class="form-control" name="quantity" placeholder="Quantity" type="text" value="<?php echo $productsDetails['quantity']; ?>">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon"><i class="icofont icofont-align-left"></i></span>
-                                                                    <input class="form-control" name="color" placeholder="Color" type="text" value="<?php echo $productsDetails['color']; ?>">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon"><i class="icofont icofont-copy-alt"></i></span>
-                                                                    <input class="form-control" name="short_description" placeholder="Product Short Description" type="text" maxlength="100" value="<?php echo $productsDetails['short_description']; ?>">
+                                                                    <input class="form-control" name="movie" placeholder="Movie" type="text" value="<?php echo $productsDetails['movie']; ?>">
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-6">
@@ -101,34 +87,29 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+                                                        <!-- <div class="row">
                                                             <div class="col-sm-6">
                                                                 <div class="input-group">
-                                                                    <span class="input-group-addon"><i class="icofont icofont-all-caps"></i></span>
-                                                                    <input class="form-control" name="size" placeholder="Size" type="text" value="<?php echo $productsDetails['size']; ?>">
+                                                                    <span class="input-group-addon"><i class="icofont icofont-copy-alt"></i></span>
+                                                                    <input class="form-control" name="short_description" placeholder="Product Short Description" type="text" maxlength="100" value="<?php //echo $productsDetails['short_description']; ?>">
                                                                 </div>
                                                             </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="icofont icofont-align-left"></i></span>
+                                                                    <input class="form-control" name="color" placeholder="Color" type="text" value="<?php //echo $productsDetails['color']; ?>">
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div> -->
+                                                        <div class="row">
                                                             <div class="col-sm-6">
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-underline"></i></span>
                                                                     <input class="form-control" name="tag" placeholder="Product Tag" type="text" value="<?php echo $productsDetails['tag']; ?>">
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                       
-                                                        <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon"><i class="icofont icofont-clip"></i></span>
-                                                                        <input name="userfile" class="form-control" type="file">
-                                                                       </div>
-                                                            </div>
-                                                            <div class="col-sm-2">
-                                                                <div class="input-group">
-                                                                   <img src="<?php echo site_url();?>assets/images/products/<?php echo $productsDetails['image']; ?>" width="50px">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
+                                                             <div class="col-sm-6">
                                                                    <div class="checkbox-fade fade-in-primary checkbox">
                                                                 <label>
                                                                     <input value="1"  <?php if($productsDetails['status'] == '1'){ echo "checked" ; } ?> type="checkbox" name="status" class="form-control">
@@ -137,18 +118,45 @@
                                                                 </label>
                                                             </div>
                                                             </div>
+                                                            
+                                                        </div>
+                                                       
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <label for="img">Click me to upload Thumbnail</label>
+                                                                <img src="<?php echo site_url();?>assets/images/products/<?php echo $productsDetails['image']; ?>" width="50px">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="icofont icofont-clip"></i></span>
+                                                                        <input name="songthumbnail" class="form-control" type="file">
+                                                                       </div>
+                                                            </div>
+                                                            
+                                                            
+                                                             <div class="col-sm-6">
+                                                                <label for="img">Click me to upload Song</label>
+                                                                [<?php echo $productsDetails['song']; ?>]
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="icofont icofont-clip"></i></span>
+                                                                        <input name="userfile" class="form-control" type="file">
+                                                                       </div>
+                                                            </div>
                                                         </div>
 
                                                             <div class="row">
                                                                 <div class="col-sm-12">
                                                                      <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-copy-alt"></i></span>
-                                                                        <textarea name="description" placeholder="Please Provide a valid Formated Product Description!" id="editor2"><?php echo $productsDetails['description']; ?></textarea>
+                                                                        <textarea name="description" placeholder="Please Provide a valid Formated Product Description!" id="editor1"><?php echo $productsDetails['description']; ?></textarea>
                                                                     </div>     
                                                                 </div>
                                                             </div>
-
-                                                             <div class="row">
+                                                             <!-- 
+                                                              <div class="col-sm-6">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="icofont icofont-all-caps"></i></span>
+                                                                    <input class="form-control" name="size" placeholder="Size" type="text" value="<?php //echo $productsDetails['size']; ?>">
+                                                                </div>
+                                                            </div> <div class="row">
                                                                 <div class="col-sm-12">
                                                                     <div class="card">
                                                                         <div class="card-header">
@@ -175,8 +183,8 @@
                                                                     </div>
                                                                 <?php endforeach; ?>
                                                                    
-                                                                </div>
                                                             
+                                                                </div>
                                                              <div class="row">
                                                                 <div class="col-sm-12">
                                                                     <div class="card">
@@ -214,16 +222,13 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-
+                                                            </div> -->
                                                              <div class="form-group">
                                                                 <button type="submit" class="btn btn-primary waves-effect waves-light">Update
                                                                 </button>
                                                             </div>
-
                                                         </div>
-                                                </div>
-                                               
+                                                </div>                                               
                                             </div>
                                         </div>
                                         </form>
@@ -232,10 +237,5 @@
                             </div>
                         </div>
                         <!-- Product edit card end -->
-                    
                 </div>
                         <!-- Basic Form Inputs card end -->
-             
-
-   
-

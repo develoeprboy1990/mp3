@@ -9,7 +9,7 @@
     
             <div class="page-header">
                 <div class="page-header-title">
-                    <h4>Product Category</h4>
+                    <h4>Song Category</h4>
                 </div>
                 <div class="page-header-breadcrumb">
                     <ul class="breadcrumb-title">
@@ -18,9 +18,9 @@
                                 <i class="icofont icofont-home"></i>
                             </a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">Product Category</a>
+                        <li class="breadcrumb-item"><a href="#!">Song Category</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">Update Product Category</a>
+                        <li class="breadcrumb-item"><a href="#!">Update Song Category</a>
                         </li>
                     </ul>
                 </div>
@@ -33,7 +33,7 @@
                         <!-- Basic Form Inputs card start -->
                         <div class="card">
                             <div class="card-header">
-                                <h5>Update Product Category</h5>
+                                <h5>Update Song Category</h5>
                                 <div class="card-header-right">
                                     <i class="icofont icofont-rounded-down"></i>
                                     <i class="icofont icofont-refresh"></i>
@@ -55,6 +55,14 @@
                                             <input type="text" name="name" value="<?php echo $productcategory['name']; ?>" class="form-control" placeholder="Category Name">
                                         </div>
                                     </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Discription</label>
+                                        <div class="input-group col-sm-10">
+                                        <span class="input-group-addon"><i class="icofont icofont-copy-alt"></i></span>
+                                            <textarea name="descp" placeholder="Please Provide a valid Formated Product Description!" id="editor1"><?php echo $productcategory['descp']; ?></textarea>
+                                        </div>     
+                                    </div> 
                                     
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Want to make Enable?</label>

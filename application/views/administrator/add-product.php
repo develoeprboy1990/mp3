@@ -50,7 +50,7 @@
                                                             <div class="col-sm-6">
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-man-in-glasses"></i></span>
-                                                                    <input class="form-control" name="sku" placeholder="Music Composer(s)" type="text">
+                                                                    <input class="form-control" name="composer" placeholder="Music Composer(s)" type="text">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -58,35 +58,21 @@
                                                             <div class="col-sm-6">
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-ui-note"></i></span>
-                                                                    <input class="form-control" name="save_price" placeholder="Lyric Writter(s)" type="text">
+                                                                    <input class="form-control" name="writter" placeholder="Lyric Writter(s)" type="text">
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-6">
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-cur-dollar"></i></span>
-                                                                    <input class="form-control" name="price" placeholder="Singer(s)" type="text">
+                                                                    <input class="form-control" name="singer" placeholder="Singer(s)" type="text">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!-- <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon"><i class="icofont icofont-numbered"></i></span>
-                                                                    <input class="form-control" name="quantity" placeholder="Quantity" type="text">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon"><i class="icofont icofont-align-left"></i></span>
-                                                                    <input class="form-control" name="color" placeholder="Color" type="text">
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
                                                         <div class="row">
                                                             <div class="col-sm-6">
                                                                 <div class="input-group">
-                                                                    <span class="input-group-addon"><i class="icofont icofont-underline"></i></span>
-                                                                    <input class="form-control" name="tag" placeholder="Song Tag" type="text">
+                                                                    <span class="input-group-addon"><i class="icofont icofont-numbered"></i></span>
+                                                                    <input class="form-control" name="movie" placeholder="Movie" type="text">
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-6">
@@ -99,38 +85,56 @@
 
                                                                 </select>
                                                             </div>
+                                                            
+                                                            
+                                                        </div> 
+                                                         <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="icofont icofont-underline"></i></span>
+                                                                    <input class="form-control" name="tag" placeholder="Song Tag" type="text">
+                                                                </div>
+                                                            </div>
+                                                           
                                                         </div>
-                                                       <!--  <div class="row">
+
+                                                        <!--
+                                                             <div class="col-sm-6">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="icofont icofont-all-caps"></i></span>
+                                                                    <input class="form-control" name="size" placeholder="File Size" type="text">
+                                                                </div>
+                                                            </div>
+                                                         <div class="row">
                                                             <div class="col-sm-6">
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-copy-alt"></i></span>
                                                                     <input class="form-control" name="short_description" placeholder="Product Short Description" type="text" maxlength="100">
                                                                 </div>
                                                             </div>
+                                                            
                                                             <div class="col-sm-6">
                                                                 <div class="input-group">
-                                                                    <span class="input-group-addon"><i class="icofont icofont-all-caps"></i></span>
-                                                                    <input class="form-control" name="size" placeholder="Size" type="text">
+                                                                    <span class="input-group-addon"><i class="icofont icofont-align-left"></i></span>
+                                                                    <input class="form-control" name="color" placeholder="Color" type="text">
                                                                 </div>
                                                             </div>
-                                                            
                                                         </div>
                                                         -->
                                                         <div class="row">
                                                             <div class="col-sm-6">
+                                                                <label for="img">Click me to upload Thumbnail</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="icofont icofont-clip"></i></span>
+                                                                        <input name="songthumbnail" class="form-control" type="file">
+                                                                       </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                 <label for="img">Click me to upload Song</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-clip"></i></span>
                                                                         <input name="userfile" class="form-control" type="file">
                                                                        </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                   <div class="checkbox-fade fade-in-primary checkbox">
-                                                                <label>
-                                                                    <input value="1" type="checkbox" name="status" class="form-control" checked="">
-                                                                    <span class="cr"><i class="cr-icon icofont icofont-verification-check txt-primary"></i></span>
-                                                                    Change Status Of The Song
-                                                                </label>
-                                                            </div>
                                                             </div>
                                                         </div>
 
@@ -195,7 +199,9 @@
                                                                     </div>
                                                                 </div>
                                                             </div> -->
+
                                                              <div class="form-group">
+                                                                <input value="1" type="hidden" name="status">
                                                                 <button type="submit" class="btn btn-primary waves-effect waves-light">Submit
                                                                 </button>
                                                             </div>

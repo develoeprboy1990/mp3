@@ -337,7 +337,7 @@
 		}
 		public function product_categories()
 		{
-			$data['title'] = 'Product Categories';
+			$data['title'] = 'Song Categories';
 			$data['product_categories'] = $this->Administrator_Model->product_categories();
 
 			 	$this->load->view('administrator/header-script');
@@ -404,13 +404,13 @@
 			$data['title'] = 'Create Product';
 
 			$this->form_validation->set_rules('name', 'Name', 'required');
-			$this->form_validation->set_rules('sku', 'SKU', 'required|callback_check_sku_exists');
-			$this->form_validation->set_rules('price', 'Price', 'required');
+			//$this->form_validation->set_rules('composer', 'Music Composer(s)', 'required');
+			//$this->form_validation->set_rules('writter', 'Lyric Writter(s)', 'required');
 			if (empty($_FILES['userfile']['name'])){
     		$this->form_validation->set_rules('userfile', 'Document', 'required');
 			}
-			$this->form_validation->set_rules('description', 'Product Description', 'required');
-			$this->form_validation->set_rules('quantity', 'Quantity', 'required');
+			//$this->form_validation->set_rules('description', 'Product Description', 'required');
+			//$this->form_validation->set_rules('singer', 'Singer(s)', 'required');
 
 			if($this->form_validation->run() === FALSE){
 				 $this->load->view('administrator/header-script');
@@ -421,28 +421,40 @@
 			}else{
 				//Upload Image
 				$config['upload_path'] = './assets/images/products';
-				$config['allowed_types'] = 'gif|jpg|png|jpeg';
-				$config['max_size'] = '2048';
-				$config['max_width'] = '2000';
-				$config['max_height'] = '2000';
+				$config['allowed_types'] = 'mp3|jpg|png|jpeg';
+				$config['max_size'] = '12000';
+				$config['max_width'] = '12000';
+				$config['max_height'] = '12000';
 
 				$this->load->library('upload', $config);
 
-				if(!$this->upload->do_upload()){
+				
+
+				if(!$this->upload->do_upload('songthumbnail')){
 					$errors =  array('error' => $this->upload->display_errors());
-					$post_image = 'noimage.jpg';
+					$post_thubnail = 'noimage.jpg';
 				}else{
 					$data =  array('upload_data' => $this->upload->data());
-					$post_image = $_FILES['userfile']['name'];
+					$post_thubnail = $_FILES['songthumbnail']['name'];
 				}
-				$dataID = $this->Administrator_Model->create_product($post_image);
+
+
+				if(!$this->upload->do_upload('userfile')){
+					$errors =  array('error' => $this->upload->display_errors());
+					$post_song = 'noimage.jpg';
+				}else{
+					$data =  array('upload_data' => $this->upload->data());
+					$post_song = $_FILES['userfile']['name'];
+				}
+
+				$dataID = $this->Administrator_Model->create_product($post_thubnail,$post_song);
 
 				//$dataID = 1; 
 				if (!empty($_FILES['imgFiles']['name'])){
 				$multipleUpload =  $this->multipleImageUpload($_FILES['imgFiles'],$dataID);
 				}
 				//Set Message
-				$this->session->set_flashdata('success', 'Product has been Added Successfull.');
+				$this->session->set_flashdata('success', 'Song has been Added Successfull.');
 				redirect('administrator/products');
 			}
 			
@@ -544,9 +556,10 @@
 			$data['title'] = 'Update Product';
 
 			$this->form_validation->set_rules('name', 'Name', 'required');
-			$this->form_validation->set_rules('price', 'Price', 'required');
+			//$this->form_validation->set_rules('composer', 'Music Composer(s)', 'required');
+			//$this->form_validation->set_rules('writter', 'Lyric Writter(s)', 'required');
 			$this->form_validation->set_rules('description', 'Product Description', 'required');
-			$this->form_validation->set_rules('quantity', 'Quantity', 'required');
+			//$this->form_validation->set_rules('singer', 'Singer(s)', 'required');
 
 			if($this->form_validation->run() === FALSE){
 				 $this->load->view('administrator/header-script');
@@ -558,22 +571,33 @@
 			}else{
 				//Upload Image
 				$config['upload_path'] = './assets/images/products';
-				$config['allowed_types'] = 'gif|jpg|png|jpeg';
-				$config['max_size'] = '2048';
-				$config['max_width'] = '2000';
-				$config['max_height'] = '2000';
+				$config['allowed_types'] = 'mp3|jpg|png|jpeg';
+				$config['max_size'] = '12000';
+				$config['max_width'] = '12000';
+				$config['max_height'] = '12000';
 
 				$this->load->library('upload', $config);
 
-				if(!$this->upload->do_upload()){
+				$data['productsDetails'] = $this->Administrator_Model->update_products($this->input->post('id'));
+
+				if(!$this->upload->do_upload('songthumbnail')){
 					$errors =  array('error' => $this->upload->display_errors());
-					$data['productsDetails'] = $this->Administrator_Model->update_products($this->input->post('id'));
-					$post_image = $data['productsDetails']['image'];
+					$post_thubnail = $data['productsDetails']['image'];
 				}else{
 					$data =  array('upload_data' => $this->upload->data());
-					$post_image = $_FILES['userfile']['name'];
+					$post_thubnail = $_FILES['songthumbnail']['name'];
 				}
-				$dataID = $this->Administrator_Model->update_products_data($post_image);
+
+				if(!$this->upload->do_upload('userfile')){
+					$errors =  array('error' => $this->upload->display_errors());
+					$post_song = $data['productsDetails']['song'];
+				}else{
+					$data =  array('upload_data' => $this->upload->data());
+					$post_song = $_FILES['userfile']['name'];
+				}
+
+
+				$dataID = $this->Administrator_Model->update_products_data($post_thubnail,$post_song);
 
 				//$dataID = 1; 
 				if (!empty($_FILES['imgFiles']['name'])){

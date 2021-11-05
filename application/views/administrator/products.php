@@ -47,7 +47,7 @@ $(document).ready(function(){
 
             <div class="page-header">
                 <div class="page-header-title">
-                    <h4>List Users</h4>
+                    <h4>List Songs</h4>
                 </div>
                 <div class="page-header-breadcrumb">
                     <ul class="breadcrumb-title">
@@ -58,7 +58,7 @@ $(document).ready(function(){
                         </li>
                         <li class="breadcrumb-item"><a href="#!">Users</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">List Users</a>
+                        <li class="breadcrumb-item"><a href="#!">List Songs</a>
                         </li>
                     </ul>
                 </div>
@@ -78,8 +78,10 @@ $(document).ready(function(){
                                         <th>Id</th>
                                         <th>Image</th>
                                         <th>Name</th>
-                                        <th>SKU</th>
-                                        <th>$ Price</th>
+                                        <th>Movie</th>
+                                        <th>Music Composer(s)</th>
+                                        <th>Lyric Writter(s)</th>
+                                        <th>Singer(s)</th>
                                         <th>Reg-Date</th>
                                         <th>Action</th>
                                     </tr>
@@ -89,11 +91,13 @@ $(document).ready(function(){
                                  <tr>
                                         <td><?php echo $post['id']; ?></td>
                                         <td>
-                                            <img width="20px;" src="<?php echo site_url();?>assets/images/products/<?php echo $post['image']; ?> ">                                           
+                                            <img width="20px;" src="<?php echo site_url();?>assets/images/products/<?php echo $post['image']; ?>">                                           
                                         </td>
-                                        <td><a href="<?php echo base_url(); ?>administrator/products/update/<?php echo $post['id']; ?>"><?php echo $post['name']; ?></a></td>
-                                        <td><?php echo $post['sku']; ?></td>
-                                        <td><?php echo $post['price']; ?></td>
+                                        <td><!-- <a href="<?php //echo base_url(); ?>administrator/products/update/<?php echo $post['id']; ?>"> --><?php echo $post['name']; ?><!-- </a> --></td>
+                                        <td><?php echo $post['movie']; ?></td>
+                                        <td><?php echo $post['composer']; ?></td>
+                                        <td><?php echo $post['writter']; ?></td>
+                                        <td><?php echo $post['singer']; ?></td>
                                          <td><?php echo date("M d,Y", strtotime($post['datetime'])); ?></td>
                                         <td>
                                                 <?php if($post['status'] == 1){ ?>

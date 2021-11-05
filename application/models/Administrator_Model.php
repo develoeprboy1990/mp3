@@ -144,6 +144,7 @@
 			$data = array(
 				'name' => $this->input->post('name'),
 				'type' => 'product',
+				'descp' => $this->input->post('descp'),
 				'status' => $this->input->post('status'),
 				'user_id' => $this->session->userdata('user_id')
 			    );
@@ -159,7 +160,7 @@
 
 		public function update_product_category_data()
 		{
-			$data = array('name' => $this->input->post('name'),
+			$data = array('name' => $this->input->post('name'),'descp' => $this->input->post('descp'),
 							'status' => $this->input->post('status')
 						  );
 
@@ -179,25 +180,26 @@
 		  }
 
 
-		  public function create_product($post_image)
+		  public function create_product($post_thubnail,$post_song)
 		{
 			$data = array('name' => $this->input->post('name'), 
-							'sku' => $this->input->post('sku'),
-							'save_price' => $this->input->post('save_price'),
-							'price' => $this->input->post('price'),
+							'composer' => $this->input->post('composer'),
+							'writter' => $this->input->post('writter'),
+							'singer' => $this->input->post('singer'),
 							'user_id' => $this->session->userdata('user_id'),
-							'quantity' => $this->input->post('quantity'),
-							'color' => $this->input->post('color'),
-							'tag' => $this->input->post('tag'),
-							'short_description' => $this->input->post('short_description'),
+							'movie' => $this->input->post('movie'),
 							'cat_id' => $this->input->post('cat_id'),
-							'size' => $this->input->post('size'),
+							'tag' => $this->input->post('tag'),
+							/*'color' => $this->input->post('color'),
+							'short_description' => $this->input->post('short_description'),*/
+							/*'size' => $this->input->post('size'),*/
 							'status' => $this->input->post('status'),
 							'description' => $this->input->post('description'),
-							'meta_title' => $this->input->post('meta_title'),
+							/*'meta_title' => $this->input->post('meta_title'),
 							'meta_desc' => $this->input->post('meta_desc'),
-							'meta_tag' => $this->input->post('meta_tag'),
-							'image' => $post_image,
+							'meta_tag' => $this->input->post('meta_tag'),*/
+							'image' => $post_thubnail,
+							'song' => $post_song,
 							'datetime' => date("Y-m-d H:i:s")
 						);
 			$this->db->insert('products', $data);
@@ -249,24 +251,25 @@
 			return $query->result_array();
 		}
 
-		public function update_products_data($post_image)
+		public function update_products_data($post_thubnail,$post_song)
 		{
 			$data = array('name' => $this->input->post('name'), 
-							'save_price' => $this->input->post('save_price'),
-							'price' => $this->input->post('price'),
+							'composer' => $this->input->post('composer'),
+							'movie' => $this->input->post('movie'),
 							'user_id' => $this->session->userdata('user_id'),
-							'quantity' => $this->input->post('quantity'),
-							'color' => $this->input->post('color'),
+							'singer' => $this->input->post('singer'),
+							'writter' => $this->input->post('writter'),
 							'tag' => $this->input->post('tag'),
-							'short_description' => $this->input->post('short_description'),
+							/*'short_description' => $this->input->post('short_description'),*/
 							'cat_id' => $this->input->post('cat_id'),
-							'size' => $this->input->post('size'),
+							/*'size' => $this->input->post('size'),*/
 							'status' => $this->input->post('status'),
 							'description' => $this->input->post('description'),
-							'meta_title' => $this->input->post('meta_title'),
+							/*'meta_title' => $this->input->post('meta_title'),
 							'meta_desc' => $this->input->post('meta_desc'),
-							'meta_tag' => $this->input->post('meta_tag'),
-							'image' => $post_image,
+							'meta_tag' => $this->input->post('meta_tag'),*/
+							'image' => $post_thubnail,
+							'song' => $post_song,
 							'datetime' => date("Y-m-d H:i:s")
 						);
 			$this->db->where('id', $this->input->post('id'));

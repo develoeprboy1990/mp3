@@ -17,6 +17,8 @@
 
 		public function get_categories(){
 			$this->db->order_by('name');
+			$this->db->where('status', '1');
+			$this->db->where('type', 'product');
 			$query = $this->db->get('categories');
 			return $query->result_array();
 		}

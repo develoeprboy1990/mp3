@@ -72,16 +72,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
-/*aursoftc_codeigniter_mp3
-aursoftc_codeigniter_mp3
+/*aursoftc_mp3
+aursoftc_mp3
 D?EUtYBqyeHx*/
 
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'aursoftc_codeigniter_mp3',
+	'username' => 'aursoftc_mp3',
 	'password' => 'D?EUtYBqyeHx',
-	'database' => 'aursoftc_codeigniter_mp3',
+	'database' => 'aursoftc_mp3',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

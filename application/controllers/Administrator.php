@@ -460,6 +460,59 @@
 			
 		}
 
+		public function create_multiple_product($page = 'add-multiple-product')
+		{
+			if (!file_exists(APPPATH.'views/administrator/'.$page.'.php')) {
+		    show_404();
+		   }
+			// Check login
+			if(!$this->session->userdata('login')) {
+				redirect('administrator/index');
+			}
+
+			$data['product_categories'] = $this->Administrator_Model->product_categories();
+			
+			$data['title'] = 'Create Product';
+
+			//$this->form_validation->set_rules('name', 'Name', 'required');
+			//$this->form_validation->set_rules('composer', 'Music Composer(s)', 'required');
+			//$this->form_validation->set_rules('writter', 'Lyric Writter(s)', 'required');
+			if (empty($_FILES['imgFiles']['name'])){
+    		$this->form_validation->set_rules('imgFiles', 'Document', 'required');
+			}
+			//$this->form_validation->set_rules('description', 'Product Description', 'required');
+			//$this->form_validation->set_rules('singer', 'Singer(s)', 'required');
+
+			if($this->form_validation->run() === FALSE){
+				 $this->load->view('administrator/header-script');
+		 	 	 $this->load->view('administrator/header');
+		  		 $this->load->view('administrator/header-bottom');
+		   		 $this->load->view('administrator/'.$page, $data);
+		  		 $this->load->view('administrator/footer');
+			}else{
+				//Upload Image
+				$config['upload_path'] = './assets/images/products';
+				$config['allowed_types'] = 'mp3|jpg|png|jpeg';
+				$config['max_size'] = '12000';
+				$config['max_width'] = '12000';
+				$config['max_height'] = '12000';
+
+				$this->load->library('upload', $config);
+
+				$dataID = $this->Administrator_Model->create_product();
+
+				//$dataID = 1; 
+				if (!empty($_FILES['imgFiles']['name'])){
+				$multipleUpload =  $this->multipleImageUpload($_FILES['imgFiles'],$dataID);
+				}
+				//Set Message
+				$this->session->set_flashdata('success', 'Songs has been Added Successfull.');
+				redirect('administrator/products');
+			}
+			
+		}
+
+
 	public function multipleImageUpload($images,$dataID){
 		$images == $_FILES['imgFiles'];
         $data = array();
@@ -472,7 +525,7 @@
                 $_FILES['userFile']['error'] = $_FILES['imgFiles']['error'][$i];
                 $_FILES['userFile']['size'] = $_FILES['imgFiles']['size'][$i];
 
-                $uploadPath = './assets/images/products_multiple/';
+                $uploadPath = './assets/images/products/';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 

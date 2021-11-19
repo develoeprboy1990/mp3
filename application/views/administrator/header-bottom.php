@@ -53,6 +53,8 @@
                         <ul class="tree-1">
                             <li><a href="<?php echo base_url(); ?>administrator/products/create">Add 
                             Song</a></li>
+                            <li><a href="<?php echo base_url(); ?>administrator/products/create-multiple">Add Multiple 
+                            Songs</a></li>
                             <li><a href="<?php echo base_url(); ?>administrator/products">List Songs</a></li>
                         </ul>
                     </li>

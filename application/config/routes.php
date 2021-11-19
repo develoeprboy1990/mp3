@@ -44,6 +44,7 @@ $route['administrator/product-categories'] = 'administrator/product_categories';
 //$route['administrator/product-categories/(:any)'] = 'administrator/update_product_category/$1';
 
 $route['administrator/products/create'] = 'administrator/create_product';
+$route['administrator/products/create-multiple'] = 'administrator/create_multiple_product';
 $route['administrator/products'] = 'administrator/get_products';
 $route['administrator/products/update/(:any)'] = 'administrator/update_products/$1';
 

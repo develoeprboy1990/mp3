@@ -47,13 +47,13 @@
                                                                      <?php endforeach; ?>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-6">
+                                                            <!-- <div class="col-sm-6">
                                                                 <label for="img">Song Tag</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="icofont icofont-underline"></i></span>
                                                                     <input class="form-control" name="tag" placeholder="Song Tag" type="text">
                                                                 </div>
-                                                            </div>
+                                                            </div> -->
                                                         </div> 
                                                          <div class="row">
                                                             <div class="col-sm-12">

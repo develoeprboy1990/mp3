@@ -133,3 +133,4 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array('Post_Model', 'Category_Model', 'Comment_Model', 'User_Model', 'Administrator_Model', 'Galleries_Model');
+//require base_url().'vendor/getID3/getid3/getid3.php';

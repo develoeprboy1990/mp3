@@ -472,14 +472,15 @@
 
 			$data['product_categories'] = $this->Administrator_Model->product_categories();
 			
-			$data['title'] = 'Create Product';
+			$data['title'] = 'Create Mutlitple Songs';
 
-			//$this->form_validation->set_rules('name', 'Name', 'required');
+			$this->form_validation->set_rules('cat_id', 'Category', 'required');
 			//$this->form_validation->set_rules('composer', 'Music Composer(s)', 'required');
 			//$this->form_validation->set_rules('writter', 'Lyric Writter(s)', 'required');
-			if (empty($_FILES['imgFiles']['name'])){
-    		$this->form_validation->set_rules('imgFiles', 'Document', 'required');
-			}
+			//if (empty($_FILES['imgFiles']['name'])){
+    		//$this->form_validation->set_rules('imgFiles', 'Document', 'required');
+			//}
+
 			//$this->form_validation->set_rules('description', 'Product Description', 'required');
 			//$this->form_validation->set_rules('singer', 'Singer(s)', 'required');
 
@@ -497,14 +498,17 @@
 				$config['max_width'] = '12000';
 				$config['max_height'] = '12000';
 
-				$this->load->library('upload', $config);
+				$this->load->library('upload', $config);	
 
-				$dataID = $this->Administrator_Model->create_product();
+							
 
 				//$dataID = 1; 
 				if (!empty($_FILES['imgFiles']['name'])){
-				$multipleUpload =  $this->multipleImageUpload($_FILES['imgFiles'],$dataID);
+					//echo 'welclome';exit;
+				$multipleUpload =  $this->multipleImageUpload($_FILES['imgFiles']);
 				}
+
+				//$dataID = $this->Administrator_Model->create_product();
 				//Set Message
 				$this->session->set_flashdata('success', 'Songs has been Added Successfull.');
 				redirect('administrator/products');
@@ -513,7 +517,7 @@
 		}
 
 
-	public function multipleImageUpload($images,$dataID){
+	public function multipleImageUpload($images){
 		$images == $_FILES['imgFiles'];
         $data = array();
         if(!empty($_FILES['imgFiles']['name'])){
@@ -527,14 +531,43 @@
 
                 $uploadPath = './assets/images/products/';
                 $config['upload_path'] = $uploadPath;
-                $config['allowed_types'] = 'gif|jpg|png';
+                $config['allowed_types'] = 'mp3|gif|jpg|png';
                 
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('userFile')){
                     $fileData = $this->upload->data();
                     $uploadData[$i]['file_name'] = $fileData['file_name'];
-                     $uploadData[$i]['product_id'] = $dataID;
+						// Initialize getID3 engine
+						$getID3 = new getID3;
+						// Analyze file and store returned data in $ThisFileInfo
+						$ThisFileInfo = $getID3->analyze('./assets/images/products/'.$uploadData[$i]['file_name']);
+						echo 'Album: ' .$ThisFileInfo['tags']['id3v2']['album'][0].'<br>';
+						echo 'Artist: ' .$ThisFileInfo['tags']['id3v2']['artist'][0].'<br>';
+						echo 'Band: ' .$ThisFileInfo['tags']['id3v2']['band'][0].'<br>';
+						echo 'Composer: ' .$ThisFileInfo['tags']['id3v2']['composer'][0].'<br>';
+						echo 'Genre: ' .$ThisFileInfo['tags']['id3v2']['genre'][0].'<br>';
+						echo 'Title: ' .$ThisFileInfo['tags']['id3v2']['title'][0].'<br>';
+						echo 'Year: ' .$ThisFileInfo['tags']['id3v2']['year'][0].'<br>';
+						echo 'Description: ' .$ThisFileInfo['tags']['id3v2']['text']['description'].'<br>';
+
+					
+  
+  if(isset($ThisFileInfo['comments']['picture'][0])){
+     $Image='data:'.$ThisFileInfo['comments']['picture'][0]['image_mime'].';charset=utf-8;base64,'.base64_encode($ThisFileInfo['comments']['picture'][0]['data']);
+  }
+?>
+  <img id="FileImage" width="150" src="<?php echo @$Image;?>" height="150">
+<?php 
+
+						
+
+
+						print "<pre>".print_r($ThisFileInfo,1).print "</pre>";
+						
+						echo $uploadData[$i]['file_name'];exit;
+                    //$uploadData[$i]['product_id'] = $dataID;
+
                    /* $uploadData[$i]['created'] = date("Y-m-d H:i:s");
                     $uploadData[$i]['modified'] = date("Y-m-d H:i:s");*/
                 }
@@ -542,8 +575,8 @@
             
             if(!empty($uploadData)){
                 //Insert file information into the database
-                $insert = $this->Administrator_Model->insertproductsmultipleImages($uploadData);
-                return $insert;
+                //$insert = $this->Administrator_Model->insertproductsmultipleImages($uploadData);
+                //return $insert;
                /* $statusMsg = $insert?'Files uploaded successfully.':'Some problem occurred, please try again.';
                 $this->session->set_flashdata('success',$statusMsg);*/
             }

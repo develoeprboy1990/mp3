@@ -502,11 +502,13 @@
 
 							
 
-				//$dataID = 1; 
+				$cat_id = $_POST['cat_id']; 
 				if (!empty($_FILES['imgFiles']['name'])){
 					//echo 'welclome';exit;
-				$multipleUpload =  $this->multipleImageUpload($_FILES['imgFiles']);
+				$multipleUpload =  $this->multipleImageUpload($_FILES['imgFiles'],$cat_id);
 				}
+
+
 
 				//$dataID = $this->Administrator_Model->create_product();
 				//Set Message
@@ -517,12 +519,13 @@
 		}
 
 
-	public function multipleImageUpload($images){
+	public function multipleImageUpload($images,$category){
 		$images == $_FILES['imgFiles'];
         $data = array();
         if(!empty($_FILES['imgFiles']['name'])){
             $filesCount = count($_FILES['imgFiles']['name']);
             for($i = 0; $i < $filesCount; $i++){
+            	$product = array();
                 $_FILES['userFile']['name'] = $_FILES['imgFiles']['name'][$i];
                 $_FILES['userFile']['type'] = $_FILES['imgFiles']['type'][$i];
                 $_FILES['userFile']['tmp_name'] = $_FILES['imgFiles']['tmp_name'][$i];
@@ -542,30 +545,38 @@
 						$getID3 = new getID3;
 						// Analyze file and store returned data in $ThisFileInfo
 						$ThisFileInfo = $getID3->analyze('./assets/images/products/'.$uploadData[$i]['file_name']);
-						echo 'Album: ' .$ThisFileInfo['tags']['id3v2']['album'][0].'<br>';
-						echo 'Artist: ' .$ThisFileInfo['tags']['id3v2']['artist'][0].'<br>';
-						echo 'Band: ' .$ThisFileInfo['tags']['id3v2']['band'][0].'<br>';
-						echo 'Composer: ' .$ThisFileInfo['tags']['id3v2']['composer'][0].'<br>';
-						echo 'Genre: ' .$ThisFileInfo['tags']['id3v2']['genre'][0].'<br>';
-						echo 'Title: ' .$ThisFileInfo['tags']['id3v2']['title'][0].'<br>';
-						echo 'Year: ' .$ThisFileInfo['tags']['id3v2']['year'][0].'<br>';
-						echo 'Description: ' .$ThisFileInfo['tags']['id3v2']['text']['description'].'<br>';
+						$product['cat_id']  = $category;
+						$product['album']  = $ThisFileInfo['tags']['id3v2']['album'][0];
+						$product['artist']  = $ThisFileInfo['tags']['id3v2']['artist'][0];
+						$product['band']  = $ThisFileInfo['tags']['id3v2']['band'][0];
+						$product['composer']  = $ThisFileInfo['tags']['id3v2']['composer'][0];
+						$product['genre']  = $ThisFileInfo['tags']['id3v2']['genre'][0];
+						$product['title']  = $ThisFileInfo['tags']['id3v2']['title'][0];
+						$product['year']  = $ThisFileInfo['tags']['id3v2']['year'][0];
+						$product['description']  = $ThisFileInfo['tags']['id3v2']['text']['description'];
 
-					
-  
-  if(isset($ThisFileInfo['comments']['picture'][0])){
-     $Image='data:'.$ThisFileInfo['comments']['picture'][0]['image_mime'].';charset=utf-8;base64,'.base64_encode($ThisFileInfo['comments']['picture'][0]['data']);
-  }
-?>
-  <img id="FileImage" width="150" src="<?php echo @$Image;?>" height="150">
-<?php 
+						list($type_, $type) = explode('/', $ThisFileInfo['comments']['picture'][0]['image_mime']);
+						list($thumb, $thumb_) = explode('.', $uploadData[$i]['file_name']);
+						$product['picture']  = $picture = $thumb.'.'.$type;
 
+						file_put_contents('./assets/images/thumbnails/'.$picture, $ThisFileInfo['comments']['picture'][0]['data']);
+
+
+						$product['file_name'] =  $uploadData[$i]['file_name'];
+
+						//if(isset($ThisFileInfo['comments']['picture'][0])){
+						//$Image='data:'.$ThisFileInfo['comments']['picture'][0]['image_mime'].'; ncharset=utf-8;base64,'.base64_encode($ThisFileInfo['comments']['picture'][0]['data']);
+						//}
 						
+						//echo $ThisFileInfo['audio']['bitrate'].'<br>';
+						$product['bitrate'] = substr($ThisFileInfo['audio']['bitrate'], 0, 3);
 
+						$dataID = $this->Administrator_Model->add_song($product);
 
-						print "<pre>".print_r($ThisFileInfo,1).print "</pre>";
+						//print_r($product).'<br><br><br>';
+						//print "<pre>".print_r($ThisFileInfo,1).print "</pre>";
 						
-						echo $uploadData[$i]['file_name'];exit;
+						
                     //$uploadData[$i]['product_id'] = $dataID;
 
                    /* $uploadData[$i]['created'] = date("Y-m-d H:i:s");

@@ -206,6 +206,26 @@
 			 return  $insert_id = $this->db->insert_id();
 		}
 
+		public function add_song($data)
+		{
+			$data = array('cat_id'=>$data['cat_id'],
+							'album' => $data['album'], 
+							'artist' => $data['artist'],
+							'band' => $data['band'],
+							'composer' => $data['composer'],
+							'genre' => $data['genre'],
+							'title' => $data['title'],
+							'year' =>$data['year'],
+							'description' => $data['description'],
+							'picture' => $data['picture'],
+							'file_name' => $data['file_name'],
+							'bitrate' => $data['bitrate']
+						);
+			$this->db->insert('products', $data);
+			 return  $insert_id = $this->db->insert_id();
+		}
+
+
 		public function insertproductsmultipleImages($data = array()){
        	 $insert = $this->db->insert_batch('product_images',$data);
        	 return $insert?true:false;

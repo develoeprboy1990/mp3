@@ -218,8 +218,10 @@
 							'year' =>$data['year'],
 							'description' => $data['description'],
 							'picture' => $data['picture'],
-							'file_name' => $data['file_name'],
-							'bitrate' => $data['bitrate']
+							'file_name_128' => $data['file_name_128'],
+							'bitrate_128' => $data['bitrate_128'],
+							'file_name_320' => $data['file_name_320'],
+							'bitrate_320' => $data['bitrate_320']
 						);
 			$this->db->insert('products', $data);
 			 return  $insert_id = $this->db->insert_id();
@@ -237,6 +239,16 @@
 
 			if(empty($query->row_array())){
 				return true;
+			}else{
+				return false;
+			}
+		}
+
+		public function get_song_name($title = FALSE)
+		{
+			$query = $this->db->get_where('products', array('title' => $title));
+			if ($query->num_rows() >= 1) {
+				return $query->row(0);
 			}else{
 				return false;
 			}
@@ -295,6 +307,24 @@
 			$this->db->where('id', $this->input->post('id'));
 			return $this->db->update('products', $data);
 		}
+
+		public function update_song_bitrate_128($update_song)
+		{
+			$data = array('bitrate_128' => $update_song['bitrate_128'], 
+							'file_name_128' => $update_song['file_name_128']
+						);
+			$this->db->where('id', $update_song['id']);
+			return $this->db->update('products', $data);
+		}
+		public function update_song_bitrate_320($update_song)
+		{
+			$data = array('bitrate_320' => $update_song['bitrate_320'], 
+							'file_name_320' => $update_song['file_name_320']
+						);
+			$this->db->where('id', $update_song['id']);
+			return $this->db->update('products', $data);
+		}
+
 
 		public function create_faq_category()
 		{

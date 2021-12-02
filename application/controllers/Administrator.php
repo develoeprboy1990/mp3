@@ -545,17 +545,50 @@
 						$getID3 = new getID3;
 						// Analyze file and store returned data in $ThisFileInfo
 						$ThisFileInfo = $getID3->analyze('./assets/images/products/'.$uploadData[$i]['file_name']);
+						if(isset($ThisFileInfo['tags']['id3v2']['title'][0]))
+						{
+						$song_exists = $this->Administrator_Model->get_song_name($ThisFileInfo['tags']['id3v2']['title'][0]);
+						if($song_exists)
+						{
+							$update_song = array();
+							
+							if($song_exists->bitrate_128 == NULL && (substr($ThisFileInfo['audio']['bitrate'], 0, 3) == 128))
+							{ 
+								$update_song['bitrate_128'] = substr($ThisFileInfo['audio']['bitrate'], 0, 3);
+								$update_song['file_name_128'] =  $uploadData[$i]['file_name'];
+								$update_song['id'] =  $song_exists->id;
+								$this->Administrator_Model->update_song_bitrate_128($update_song);
+							}
+							elseif($song_exists->bitrate_320 == NULL && (substr($ThisFileInfo['audio']['bitrate'], 0, 3) == 320))
+							{
+								$update_song['bitrate_320'] = substr($ThisFileInfo['audio']['bitrate'], 0, 3);
+								$update_song['file_name_320'] =  $uploadData[$i]['file_name'];
+								$update_song['id'] =  $song_exists->id;
+								$this->Administrator_Model->update_song_bitrate_320($update_song);
+							}	
+
+							
+						}	
+						else{
 						$product['cat_id']  = $category;
 						$product['album']  = $ThisFileInfo['tags']['id3v2']['album'][0];
 						$product['artist']  = $ThisFileInfo['tags']['id3v2']['artist'][0];
+
+						if (isset($ThisFileInfo['tags']['id3v2']['band'][0]))
 						$product['band']  = $ThisFileInfo['tags']['id3v2']['band'][0];
+						else
+						$product['band']  = NULL;
+
 						$product['composer']  = $ThisFileInfo['tags']['id3v2']['composer'][0];
 						$product['genre']  = $ThisFileInfo['tags']['id3v2']['genre'][0];
 						$product['title']  = $ThisFileInfo['tags']['id3v2']['title'][0];
 						$product['year']  = $ThisFileInfo['tags']['id3v2']['year'][0];
-						if(array_key_exists('description',$ThisFileInfo)) 
+
+						if (isset($ThisFileInfo['tags']['id3v2']['text']['description']))
 						$product['description']  = $ThisFileInfo['tags']['id3v2']['text']['description'];
-							
+						else
+						$product['description']  = NULL;
+
 
 						list($type_, $type) = explode('/', $ThisFileInfo['comments']['picture'][0]['image_mime']);
 						list($thumb, $thumb_) = explode('.', $uploadData[$i]['file_name']);
@@ -563,17 +596,37 @@
 
 						file_put_contents('./assets/images/'.$picture, $ThisFileInfo['comments']['picture'][0]['data']);
 
+						if(isset($ThisFileInfo['audio']['bitrate']))
+						{
+							if(substr($ThisFileInfo['audio']['bitrate'], 0, 3) == '128')
+							{
+									$product['bitrate_128'] = substr($ThisFileInfo['audio']['bitrate'], 0, 3);
+									$product['file_name_128'] =  $uploadData[$i]['file_name'];
+									$product['file_name_320'] = NULL; 
+									$product['bitrate_320'] = NULL;
 
-						$product['file_name'] =  $uploadData[$i]['file_name'];
+							}
+							elseif(substr($ThisFileInfo['audio']['bitrate'], 0, 3) == '320'){
+									$product['bitrate_320'] = substr($ThisFileInfo['audio']['bitrate'], 0, 3);
+									$product['file_name_320'] =  $uploadData[$i]['file_name'];
+									$product['bitrate_128'] = NULL;
+									$product['file_name_128'] = NULL;
+							}
+						}
+
+						$dataID = $this->Administrator_Model->add_song($product);
+						}
+						}
+
+						
+
 
 						//if(isset($ThisFileInfo['comments']['picture'][0])){
 						//$Image='data:'.$ThisFileInfo['comments']['picture'][0]['image_mime'].'; ncharset=utf-8;base64,'.base64_encode($ThisFileInfo['comments']['picture'][0]['data']);
 						//}
 						
 						//echo $ThisFileInfo['audio']['bitrate'].'<br>';
-						$product['bitrate'] = substr($ThisFileInfo['audio']['bitrate'], 0, 3);
-
-						$dataID = $this->Administrator_Model->add_song($product);
+						
 
 						//print_r($product).'<br><br><br>';
 						//print "<pre>".print_r($ThisFileInfo,1).print "</pre>";
@@ -586,13 +639,6 @@
                 }
             }
             
-            if(!empty($uploadData)){
-                //Insert file information into the database
-                //$insert = $this->Administrator_Model->insertproductsmultipleImages($uploadData);
-                //return $insert;
-               /* $statusMsg = $insert?'Files uploaded successfully.':'Some problem occurred, please try again.';
-                $this->session->set_flashdata('success',$statusMsg);*/
-            }
         }
     }
 		// Check Product SKU  exists

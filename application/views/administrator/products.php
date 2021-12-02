@@ -85,7 +85,8 @@ $(document).ready(function(){
                                         <th>Genre</th>
                                         <th>Title</th>
                                         <th>Year</th>
-                                        <th>Bitrate</th>
+                                        <th>128 Bitrate</th>
+                                        <th>320 Bitrate</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -104,14 +105,15 @@ $(document).ready(function(){
                                         <td><?php echo $post['genre']; ?></td>
                                         <td><?php echo $post['title']; ?></td>
                                         <td><?php echo $post['year']; ?></td>
-                                        <td><?php echo $post['bitrate']; ?></td>
+                                        <td><?php echo $post['bitrate_128']; ?></td>
+                                        <td><?php echo $post['bitrate_320']; ?></td>
                                         <td>
                                         <?php if($post['status'] == 1){ ?>
                                         <a class="label label-inverse-primary enable" href='<?php echo base_url(); ?>administrator/enable/<?php echo $post['id']; ?>?table=<?php echo base64_encode('products'); ?>'>Enabled</a>
                                         <?php }else{ ?> 
                                         <a class="label label-inverse-warning desable" href='<?php echo base_url(); ?>administrator/desable/<?php echo $post['id']; ?>?table=<?php echo base64_encode('products'); ?>'>Desabled</a>
                                         <?php } ?>
-                                        <a class="label label-inverse-info" href='<?php echo base_url(); ?>administrator/products/update/<?php echo $post['id']; ?>'>Edit</a>
+                                        <!-- <a class="label label-inverse-info" href='<?php //echo base_url(); ?>administrator/products/update/<?php //echo $post['id']; ?>'>Edit</a> -->
                                         <a class="label label-inverse-danger delete" href='<?php echo base_url(); ?>administrator/delete/<?php echo $post['id']; ?>?table=<?php echo base64_encode('products'); ?>'>Delete</a>
                                         </td>
                                     </tr>

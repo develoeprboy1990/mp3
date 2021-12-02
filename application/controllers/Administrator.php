@@ -553,13 +553,15 @@
 						$product['genre']  = $ThisFileInfo['tags']['id3v2']['genre'][0];
 						$product['title']  = $ThisFileInfo['tags']['id3v2']['title'][0];
 						$product['year']  = $ThisFileInfo['tags']['id3v2']['year'][0];
+						if(array_key_exists('description',$ThisFileInfo)) 
 						$product['description']  = $ThisFileInfo['tags']['id3v2']['text']['description'];
+							
 
 						list($type_, $type) = explode('/', $ThisFileInfo['comments']['picture'][0]['image_mime']);
 						list($thumb, $thumb_) = explode('.', $uploadData[$i]['file_name']);
 						$product['picture']  = $picture = $thumb.'.'.$type;
 
-						file_put_contents('./assets/images/thumbnails/'.$picture, $ThisFileInfo['comments']['picture'][0]['data']);
+						file_put_contents('./assets/images/'.$picture, $ThisFileInfo['comments']['picture'][0]['data']);
 
 
 						$product['file_name'] =  $uploadData[$i]['file_name'];
@@ -607,10 +609,9 @@
 		public function get_products()
 		{
 			$data['products'] = $this->Administrator_Model->get_products();
-			
-			if (empty($data['products'])) {
+			/*if (empty($data['products'])) {
 				show_404();
-			}
+			}*/
 			$data['title'] = 'List products';
 
 			$this->load->view('administrator/header-script');
